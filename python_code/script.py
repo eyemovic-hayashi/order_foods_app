@@ -1,5 +1,6 @@
 from food import Food
 from drink import Drink
+import sys
 
 food1 = Food('注文しない', 0, 0)
 food2 = Food('ハンバーガー', 100, 250)
@@ -34,20 +35,26 @@ print('--------------------')
 order_food = int(input('フードの番号を選んでください：'))
 if order_food == 0:
   print('フードの注文はありませんでした')
-else:
+elif 1 <= order_food <= 3:
   select_food = foods[order_food]
   print('選んだフードは「' + select_food.name + '」です')
   food_count = int(input('フードの注文個数を入力してください:'))
   print(select_food.name + 'を' + str(food_count) + '個注文しました')
+elif order_food >= 4:
+  print('フードメニューにありません。やり直してください')
+  sys.exit()
 
 order_drink = int(input('続いてドリンクの番号を選んでください：'))
 if order_drink == 0:
   print('ドリンクの注文はありませんでした')
-else:
+elif 1 <= order_drink <= 3:
   select_drink = drinks[order_drink]
   print('選んだドリンクは「' + select_drink.name + '」です')
   drink_count = int(input('ドリンクの注文個数を入力してください:'))
   print(select_drink.name + 'を' + str(drink_count) + '個注文しました')
+else:
+  print('ドリンクメニューにありません。やり直してください')
+  sys.exit()
 
 if order_food == 0 and order_drink == 0:
   print('またのご利用お待ちしています')
